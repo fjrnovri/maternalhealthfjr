@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+            rel="stylesheet"
+        />
+        <title>Aplikasi Prediksi Mental Health Risk</title>
+    </head>
+    <body
+        class="
+            flex flex-col
+            justify-between
+            item-center
+            p-8
+            min-h-screen
+            bg-gradient-to-r
+            from-green-400
+            to-blue-500
+            text-gray-800
+            md:flex-row
+        "
+    >
+        <main class="bg-white p-16 rounded-lg">
+            <h1 class="text-3xl font-bold mb-8">
+                Fitur Mental Health Risk:
+            </h1>
+
+            <form
+                action="{{ url_for('predict') }}"
+                method="post"
+                class="flex flex-col"
+            >
+                <label for="age" class="mb-2">Age</label>
+                <input
+                    type="text"
+                    name="age"
+                    placeholder="age"
+                    required="required"
+                    class="p-4 bg-gray-100 rounded-md"
+                />
+
+                <label for="systolicbp" class="mb-2">SystolicBP</label>
+                <input
+                    type="text"
+                    name="systolicbp"
+                    placeholder="systolicbp"
+                    required="required"
+                    class="p-4 bg-gray-100 rounded-md"
+                />
+
+                <label for="diastolicbp" class="mb-2">DiastolicBP</label>
+                <input
+                    type="text"
+                    name="diastolicbp"
+                    placeholder="diastolicbp"
+                    required="required"
+                    class="p-4 bg-gray-100 rounded-md"
+                />
+
+                <label for="bs" class="mb-2">BS</label>
+                <input
+                    type="text"
+                    name="bs"
+                    placeholder="bs"
+                    required="required"
+                    class="p-4 bg-gray-100 rounded-md"
+                />
+                <label for="bodytemp" class="mb-2">BodyTemp</label>
+                <input
+                    type="text"
+                    name="bodytemp"
+                    placeholder="bodytemp"
+                    required="required"
+                    class="p-4 bg-gray-100 rounded-md"
+                />
+                <label for="heartrate" class="mb-2">HeartRate</label>
+                <input
+                    type="text"
+                    name="heartrate"
+                    placeholder="heartrate"
+                    required="required"
+                    class="p-4 bg-gray-100 rounded-md"
+                />
+                
+
+                <button
+                    type="submit"
+                    class="
+                        flex
+                        justify-center
+                        align-center
+                        mt-8
+                        p-4
+                        bg-gradient-to-r
+                        from-green-400
+                        to-blue-500
+                        text-white
+                        rounded-md
+                    "
+                >
+                    PREDIKSI SEKARANG
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="feather feather-arrow-right ml-4"
+                    >
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </button>
+            </form>
+        </main>
+        <section class="mt-8 h-full flex-auto rounded-lg md:mt-0 md:ml-8">
+            <div class="bg-white p-16 rounded-lg">
+                <h1 class="text-2xl mb-8">
+                    Berita tersebut diprediksikan
+                </h1>
+                <h2 class="text-5xl font-bold">{{ prediction }}</h2>
+                {% if (prediction) != '' %}
+                <div class="mt-8">
+                    <p>Age: {{ age }}</p>
+                    <p>SystolicBP: {{ systolicbp }}</p>
+                    <p>DiastolicBP: {{ diastolicbp }}</p>
+                    <p>BS: {{ bs }}</p>
+                    <p>BodyTemp: {{ bodytemp }}</p>
+                    <p>HeartRate: {{ heartrate }}</p>
+                </div>
+                {% endif %}
+            </div>
+            <div class="flex justify-around bg-white p-16 rounded-lg mt-8">
+
+                <img
+                    class="h-24 md:h-28"
+                    src="https://drive.google.com/thumbnail?id=1U664Ihl02fVgBVTvZ1-5kxotHDs-Uomq"
+                    alt="logo-it-itts"
+
+                />
+            </div>
+        </section>
+    </body>
+</html>
